@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Formulário de Fornecedor - WebFlux</title>
+</head>
+<body>
+    <h1>Formulário de Fornecedor</h1>
+    <!--
+        NOTA: Os templates Thymeleaf são compatíveis com WebFlux sem alterações.
+        O thymeleaf-spring5 (incluído no spring-boot-starter-thymeleaf) detecta
+        o contexto reativo e processa os templates de forma assíncrona.
+    -->
+    <form th:action="@{/fornecedores/salvar}" th:object="${fornecedor}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" /><br/>
+        <label>CNPJ:</label>
+        <input type="text" th:field="*{cnpj}" /><br/>
+        <label>Endereço:</label>
+        <input type="text" th:field="*{endereco}" /><br/>
+        <label>Bairro:</label>
+        <input type="text" th:field="*{bairro}" /><br/>
+        <label>Município:</label>
+        <input type="text" th:field="*{municipio}" /><br/>
+        <label>CEP:</label>
+        <input type="text" th:field="*{cep}" /><br/>
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/fornecedores}">Voltar</a>
+</body>
+</html>

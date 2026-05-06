@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+    <title>Lista de Fornecedores - WebFlux</title>
+</head>
+<body>
+    <h1>Fornecedores API/WEB RESTFUL - WebFlux</h1>
+    <!--
+        NOTA: Template compatível com WebFlux sem alterações.
+        O controller já chama collectList() para transformar Flux em List,
+        portanto o th:each funciona normalmente sobre a lista fornecedores.
+    -->
+    <a th:href="@{/fornecedores/novo}">Novo Fornecedor</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Município</th>
+                <th>CEP</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fornecedor : ${fornecedores}">
+                <td th:text="${fornecedor.id}"></td>
+                <td th:text="${fornecedor.nome}"></td>
+                <td th:text="${fornecedor.cnpj}"></td>
+                <td th:text="${fornecedor.endereco}"></td>
+                <td th:text="${fornecedor.bairro}"></td>
+                <td th:text="${fornecedor.municipio}"></td>
+                <td th:text="${fornecedor.cep}"></td>
+                <td>
+                    <a th:href="@{/fornecedores/editar/{id}(id=${fornecedor.id})}">Editar</a>
+                    <a th:href="@{/fornecedores/deletar/{id}(id=${fornecedor.id})}">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

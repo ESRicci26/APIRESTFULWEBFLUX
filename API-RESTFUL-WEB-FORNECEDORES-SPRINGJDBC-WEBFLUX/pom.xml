@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.1</version>
+        <relativePath />
+    </parent>
+    <groupId>com.javaricci</groupId>
+    <artifactId>API-RESTFUL-WEB-FORNECEDORES-SPRINGJDBC-WEBFLUX</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>API-RESTFUL-WEB-FORNECEDORES-SPRINGJDBC-WEBFLUX</name>
+    <description>Projeto Spring Boot API-RESTFUL-WEB-FORNECEDORES - Spring WebFlux + JDBC</description>
+    <url />
+    <licenses><license /></licenses>
+    <developers><developer /></developers>
+    <scm>
+        <connection /><developerConnection /><tag /><url />
+    </scm>
+
+    <properties>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!--
+        ============================================================
+        MUDANÇA PRINCIPAL: spring-boot-starter-web  →  spring-boot-starter-webflux
+        O WebFlux usa o Netty como servidor HTTP reativo no lugar do Tomcat.
+        ============================================================
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <!--
+        Thymeleaf com suporte reativo para WebFlux.
+        O spring-boot-starter-thymeleaf já inclui thymeleaf-spring5 que detecta
+        o contexto reativo automaticamente quando o WebFlux está no classpath.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Spring JDBC (mantido — JdbcTemplate é bloqueante, usado com Schedulers.boundedElastic) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!-- SQLite driver -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+        </dependency>
+
+        <!-- JasperReports para geração de PDF -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.21.3</version>
+        </dependency>
+
+        <!--
+        ============================================================
+        MUDANÇA: springdoc-openapi-ui  →  springdoc-openapi-webflux-ui
+        A versão para WebFlux substitui a versão MVC do Swagger UI.
+        ============================================================
+        -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webflux-ui</artifactId>
+            <version>1.6.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Reactor Test (útil para testar Mono/Flux com StepVerifier) -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+<build>
+    <plugins>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.3.1</version>
+        </plugin>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+
+    </plugins>
+</build>
+
+</project>
